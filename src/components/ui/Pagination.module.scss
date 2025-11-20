@@ -1,0 +1,18 @@
+@import '@/styles/variables.scss';
+
+// Estilos complejos: solo el estado activo con gradiente
+.button {
+  // Estilos base en Tailwind, aquí solo para override si es necesario
+}
+
+.pageButton {
+  // Estilos base en Tailwind
+  
+  &.active {
+    background: linear-gradient(90deg, $gradient-start, $gradient-end);
+    color: white;
+    border-color: $gradient-start;
+    font-weight: 600;
+  }
+}
+

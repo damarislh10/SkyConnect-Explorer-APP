@@ -1,0 +1,85 @@
+@import "@/styles/variables.scss";
+
+.airportCard {
+  position: relative;
+  width: 850px;
+  height: 235px;
+  background: linear-gradient(90deg, #3f495f 0%, #0e1934 74%);
+  border-radius: 8px; /* ⬅️ igual que Figma */
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.15s ease-out, box-shadow 0.15s ease-out,
+    border-color 0.15s ease-out;
+  opacity: 1;
+  padding: 24px 32px; 
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.45);
+    border-color: rgba(0, 255, 231, 0.7);
+  }
+
+  @media (max-width: 1800px) {
+    width: 100%;
+    max-width: 850px;
+  }
+
+  @media (max-width: 1024px) {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    min-height: 235px;
+  }
+}
+
+.airportCard::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 42%;
+  height: 100%;
+  background-image: url("../../assets/display/detailAirplane.jpg");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+.airportCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 42%;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.airportCard > * {
+  position: relative;
+  z-index: 1;
+}
+
+.icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, $gradient-start, $gradient-end);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  flex-shrink: 0;
+}
+
+.iataCode {
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, $gradient-start, $gradient-end);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}

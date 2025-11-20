@@ -1,0 +1,21 @@
+@import '@/styles/variables.scss';
+
+
+.logo {
+  font-size: 1.75rem;
+  font-weight: 900;
+  background: linear-gradient(90deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+  margin: 0;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+
+

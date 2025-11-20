@@ -1,0 +1,72 @@
+@import '@/styles/variables.scss';
+@import '@/styles/mixins.scss';
+
+.button {
+  @include button-base;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+
+    &:hover {
+      transform: none;
+      box-shadow: none;
+    }
+  }
+}
+
+.buttonPrimary {
+  background: linear-gradient(90deg, $gradient-start, $gradient-end);
+  color: white;
+
+  &:hover:not(:disabled) {
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+}
+
+.buttonSecondary {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+
+  &:hover:not(:disabled) {
+    background-color: var(--bg-hover);
+  }
+}
+
+.buttonOutline {
+  background-color: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+
+  &:hover:not(:disabled) {
+    background-color: var(--bg-hover);
+    border-color: $primary-color;
+  }
+}
+
+.buttonSm {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+.buttonMd {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+}
+
+.buttonLg {
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+}
+
