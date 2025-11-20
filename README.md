@@ -1,36 +1,86 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SkyConnect Explorer
 
-## Getting Started
+Aplicación web desarrollada en Next.js para explorar información detallada de aeropuertos alrededor del mundo. Consume la API de Aviationstack para obtener datos en tiempo real.
 
-First, run the development server:
+## 📋 Requisitos Previos
 
+- Node.js 18+ 
+- npm o yarn
+- API Key de Aviationstack (gratuita en [aviationstack.com](https://aviationstack.com/))
+
+## 🛠️ Instalación
+
+1. Clona el repositorio:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/damarislh10/SkyConnect-Explorer-APP.git
+cd skyconnect-explorer-app
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Instala las dependencias:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Configura las variables de entorno:
+```bash
+cp .env.development
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Edita `.env.development` y agrega la API key:
+```
+NEXT_PUBLIC_AVIATIONSTACK_API_KEY=tu_api_key_aqui
+```
 
-## Learn More
+4. Ejecuta el servidor de desarrollo:
+```bash
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+Abre [http://localhost:3000](http://localhost:3000) en tu navegador.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Scripts Disponibles
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `npm run dev` - Inicia el servidor de desarrollo
+- `npm run build` - Construye la aplicación para producción
+- `npm run start` - Inicia el servidor de producción
+- `npm run lint` - Ejecuta el linter
+- `npm test` - Ejecuta los tests
+- `npm run test:watch` - Ejecuta tests en modo watch
+- `npm run test:coverage` - Genera reporte de cobertura
 
-## Deploy on Vercel
+##  Testing
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Los tests están organizados junto a los componentes:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm test
+
+npm run test:watch
+
+npm run test:coverage
+```
+
+##  Estilos
+
+El proyecto usa:
+- **Tailwind CSS** para utilidades
+- **SCSS Modules** para estilos de componentes
+- **Variables CSS** para temas
+
+##  Tecnologías Utilizadas
+
+- **Next.js 16** - Framework React con App Router
+- **TypeScript** - Tipado estático
+- **Zustand** - Gestión de estado
+- **React Leaflet** - Mapas interactivos
+- **SCSS** - Preprocesador CSS
+- **Tailwind CSS** - Framework CSS utility-first
+- **Jest** - Framework de testing
+- **React Testing Library** - Testing de componentes
+
+##  Variables de Entorno
+
+| Variable | Descripción | Requerido |
+|----------|-------------|-----------|
+| `NEXT_PUBLIC_AVIATIONSTACK_API_KEY` | API Key de Aviationstack | Sí |
+
