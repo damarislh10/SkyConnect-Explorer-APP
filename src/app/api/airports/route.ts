@@ -25,7 +25,6 @@ export async function GET(request: Request) {
       },
     });
   } catch (error) {
-    console.error('Error in airports API route:', error);
     return NextResponse.json(
       { error: 'Error fetching airports' },
       { status: 500 }

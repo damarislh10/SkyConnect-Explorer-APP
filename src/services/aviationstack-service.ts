@@ -93,14 +93,11 @@ export async function getAirportByIata(iataCode: string): Promise<Airport | null
     
     return null;
   } catch (error) {
-    console.error('Error fetching airport by IATA:', error);
     throw error;
   }
 }
 
-/**
- * Obtiene un aeropuerto por su ID
- */
+
 export async function getAirportById(airportId: string): Promise<Airport | null> {
   try {
     const params: Record<string, string | number> = {
@@ -126,7 +123,6 @@ export async function getAirportById(airportId: string): Promise<Airport | null>
     
     return airport || null;
   } catch (error) {
-    console.error('Error fetching airport by ID:', error);
     throw error;
   }
 }

@@ -1,6 +1,3 @@
-/**
- * Componente Input reutilizable
- */
 
 import { forwardRef } from 'react';
 import styles from './Input.module.scss';

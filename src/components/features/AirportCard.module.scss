@@ -30,6 +30,17 @@
     max-width: 100%;
     height: auto;
     min-height: 235px;
+    padding: 20px 24px;
+  }
+  
+  @media (max-width: 768px) {
+    padding: 16px 20px;
+    min-height: 200px;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 14px 16px;
+    min-height: 180px;
   }
 }
 
@@ -72,6 +83,11 @@
   justify-content: center;
   color: white;
   flex-shrink: 0;
+  
+  @media (max-width: 480px) {
+    width: 40px;
+    height: 40px;
+  }
 }
 
 .iataCode {
@@ -82,4 +98,12 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
   line-height: 1;
+  
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1.75rem;
+  }
 }

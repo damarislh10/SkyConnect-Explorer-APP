@@ -1,18 +1,34 @@
 @import '@/styles/variables.scss';
 
-// Estilos complejos: solo el estado activo con gradiente
 .button {
-  // Estilos base en Tailwind, aquí solo para override si es necesario
+  background-color: $tab-active-bg;
+  color: #ffffff;
+  border: none;
+  
+  &:hover:not(:disabled) {
+    opacity: 0.9;
+  }
+  
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 }
 
 .pageButton {
-  // Estilos base en Tailwind
+  background-color: $tab-active-bg;
+  color: #ffffff;
+  border: none;
+  
+  &:hover {
+    opacity: 0.9;
+  }
   
   &.active {
-    background: linear-gradient(90deg, $gradient-start, $gradient-end);
-    color: white;
-    border-color: $gradient-start;
+    background-color: $tab-active-bg;
+    color: #ffffff;
     font-weight: 600;
+    opacity: 1;
   }
 }
 

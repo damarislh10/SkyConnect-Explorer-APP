@@ -1,6 +1,4 @@
-/**
- * Componente de Paginación
- */
+
 
 import styles from './Pagination.module.scss';
 import { cn } from '@/lib/utils';
@@ -15,7 +13,6 @@ export interface PaginationProps {
 export function Pagination({ currentPage, totalPages, onPageChange, className }: PaginationProps) {
     const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 
-    // Mostrar solo páginas cercanas a la actual
     const getVisiblePages = () => {
         if (totalPages <= 7) return pages;
 
@@ -28,14 +25,12 @@ export function Pagination({ currentPage, totalPages, onPageChange, className }:
     const visiblePages = getVisiblePages();
 
     return (
-        <div className={cn("flex items-center justify-center gap-2 flex-wrap", className)}>
+        <div className={cn("flex items-center justify-center gap-1 sm:gap-2 flex-wrap", className)}>
             <button
                 className={cn(
-                    "px-4 py-2 min-w-[100px] rounded-lg border transition-all duration-200",
-                    "bg-gray-50 dark:bg-gray-900 border-gray-200 dark:border-gray-800",
-                    "text-gray-900 dark:text-gray-100",
-                    "hover:bg-gray-100 dark:hover:bg-gray-800 hover:-translate-y-0.5 hover:shadow-md",
-                    "disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-none",
+                    "px-3 sm:px-4 py-2 min-w-[80px] sm:min-w-[100px] rounded-lg transition-all duration-200 text-sm sm:text-base",
+                    "hover:-translate-y-0.5 hover:shadow-md",
+                    "disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-none",
                     styles.button
                 )}
                 onClick={() => onPageChange(currentPage - 1)}
@@ -50,10 +45,8 @@ export function Pagination({ currentPage, totalPages, onPageChange, className }:
                     <button
                         key={page}
                         className={cn(
-                            "px-3 py-2 min-w-[40px] rounded-lg border transition-all duration-200",
-                            "bg-gray-50 dark:bg-gray-900 border-gray-200 dark:border-gray-800",
-                            "text-gray-900 dark:text-gray-100",
-                            "hover:bg-gray-100 dark:hover:bg-gray-800 hover:-translate-y-0.5 hover:shadow-md",
+                            "px-2 sm:px-3 py-2 min-w-[35px] sm:min-w-[40px] rounded-lg transition-all duration-200 text-sm sm:text-base",
+                            "hover:-translate-y-0.5 hover:shadow-md",
                             currentPage === page && styles.active,
                             styles.pageButton
                         )}
@@ -68,11 +61,9 @@ export function Pagination({ currentPage, totalPages, onPageChange, className }:
 
             <button
                 className={cn(
-                    "px-4 py-2 min-w-[100px] rounded-lg border transition-all duration-200",
-                    "bg-gray-50 dark:bg-gray-900 border-gray-200 dark:border-gray-800",
-                    "text-gray-900 dark:text-gray-100",
-                    "hover:bg-gray-100 dark:hover:bg-gray-800 hover:-translate-y-0.5 hover:shadow-md",
-                    "disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-none",
+                    "px-3 sm:px-4 py-2 min-w-[80px] sm:min-w-[100px] rounded-lg transition-all duration-200 text-sm sm:text-base",
+                    "hover:-translate-y-0.5 hover:shadow-md",
+                    "disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-none",
                     styles.button
                 )}
                 onClick={() => onPageChange(currentPage + 1)}

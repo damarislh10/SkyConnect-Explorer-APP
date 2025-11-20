@@ -53,7 +53,7 @@ export function AirportDetailsTabs({ airport }: AirportDetailsTabsProps) {
                     <Card className={`${styles.detailsCard} px-6 py-5 md:px-8 md:py-6`}>
                         <div className={styles.contentSection}>
                             <h3 className={styles.sectionTitle}>
-                                <span className={styles.sectionIcon}>ℹ</span>
+                                <span className={styles.sectionIcon}>ⓘ</span>
                                 Información General
                             </h3>
 
@@ -97,7 +97,7 @@ export function AirportDetailsTabs({ airport }: AirportDetailsTabsProps) {
                     <Card className={`${styles.detailsCard} px-6 py-5 md:px-8 md:py-6`}>
                         <div className={styles.contentSection}>
                             <h3 className={styles.sectionTitle}>
-                                <span className={styles.sectionIcon}>📍</span>
+                                <span className={styles.sectionIcon}>⚲</span>
                                 Ubicación
                             </h3>
 
@@ -129,6 +129,7 @@ export function AirportDetailsTabs({ airport }: AirportDetailsTabsProps) {
                     <Card className={`${styles.detailsCard} px-6 py-5 md:px-8 md:py-6`}>
                         <div className={styles.contentSection}>
                             <h3 className={styles.sectionTitle}>
+                                <span className={styles.sectionIcon}>⏱</span>
                                 Zona Horaria
                             </h3>
 
@@ -148,9 +149,10 @@ export function AirportDetailsTabs({ airport }: AirportDetailsTabsProps) {
                             </div>
 
                             <div className={styles.timeSection}>
-                                <h4 className={styles.timeTitle}>
+                                <h3 className={styles.timeTitle}>
+                                    <span className={styles.sectionIcon}>⏱</span>
                                     Hora Local
-                                </h4>
+                                </h3>
                                 <p className={styles.localTime}>{formatDate(new Date())}</p>
                             </div>
                         </div>
@@ -161,21 +163,8 @@ export function AirportDetailsTabs({ airport }: AirportDetailsTabsProps) {
                     <Card className={`${styles.detailsCard} px-6 py-5 md:px-8 md:py-6`}>
                         <div className={styles.contentSection}>
                             <h3 className={styles.sectionTitle}>
-                                Estadísticas
+                                <span>Estadísticas</span>
                             </h3>
-
-                            <div className={styles.infoList}>
-                                <p>
-                                    <span className={styles.label}>ID del Aeropuerto: </span>
-                                    <span className={styles.value}>{airport.airport_id}</span>
-                                </p>
-                                <p>
-                                    <span className={styles.label}>Código de Ciudad: </span>
-                                    <span className={styles.value}>
-                                        {airport.city_iata_code || "No disponible"}
-                                    </span>
-                                </p>
-                            </div>
 
                             <p className={styles.note}>
                                 * Información adicional de estadísticas disponible según la API

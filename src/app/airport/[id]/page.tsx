@@ -81,19 +81,19 @@ export default function AirportDetailPage() {
         'Ciudad';
 
     return (
-        <div className="min-h-[calc(100vh-80px)] px-6 py-8 max-w-7xl mx-auto w-full">
-            <div className="mb-12">
+        <div className="min-h-[calc(100vh-80px)] px-4 sm:px-6 py-4 sm:py-8 max-w-7xl mx-auto w-full">
+            <div className="mb-8 sm:mb-12">
                 <Button
                     onClick={() => router.back()}
                     variant="outline"
-                    className="mb-6"
+                    className="mb-4 sm:mb-6 text-sm sm:text-base"
                 >
                     ← Volver
                 </Button>
-                <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-2">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-2 break-words">
                     {airport.airport_name}
                 </h1>
-                <p className="text-xl text-gray-600 dark:text-gray-400">
+                <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-400 break-words">
                     {city}, {airport.country_name}
                 </p>
             </div>

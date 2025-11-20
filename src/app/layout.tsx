@@ -30,7 +30,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ThemeProvider>
-          <div style={{ position: 'relative', zIndex: 1, minHeight: '100vh' }}>
+          <div >
             <Header />
             <main>{children}</main>
           </div>
