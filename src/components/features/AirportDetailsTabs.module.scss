@@ -108,8 +108,9 @@
   width: 40%;
   height: 100%;
   background-image: url("../../assets/display/detailAirplane.jpg");
-  background-size: cover;
-  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center right;
   opacity: 0.25;
 }
 
