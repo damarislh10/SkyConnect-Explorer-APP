@@ -1,5 +1,7 @@
 
+'use client';
 
+import { useState, useEffect } from 'react';
 import styles from './Pagination.module.scss';
 import { cn } from '@/lib/utils';
 
@@ -11,6 +13,18 @@ export interface PaginationProps {
 }
 
 export function Pagination({ currentPage, totalPages, onPageChange, className }: PaginationProps) {
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 640);
+        };
+
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
     const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 
     const getVisiblePages = () => {
@@ -22,13 +36,22 @@ export function Pagination({ currentPage, totalPages, onPageChange, className }:
         return pages.slice(currentPage - 3, currentPage + 2);
     };
 
-    const visiblePages = getVisiblePages();
+    const getMobileVisiblePages = () => {
+        if (totalPages <= 3) return pages;
+
+        // En móvil, mostrar máximo 3 páginas alrededor de la actual
+        if (currentPage <= 2) return pages.slice(0, 3);
+        if (currentPage >= totalPages - 1) return pages.slice(totalPages - 3);
+        return pages.slice(currentPage - 2, currentPage + 1);
+    };
+
+    const visiblePages = isMobile ? getMobileVisiblePages() : getVisiblePages();
 
     return (
-        <div className={cn("flex items-center justify-center gap-1 sm:gap-2 flex-wrap", className)}>
+        <div className={cn("flex items-center justify-center gap-0.5 sm:gap-2 flex-wrap", styles.paginationWrapper, className)}>
             <button
                 className={cn(
-                    "px-3 sm:px-4 py-2 min-w-[80px] sm:min-w-[100px] rounded-lg transition-all duration-200 text-sm sm:text-base",
+                    "px-2 py-1.5 sm:px-4 sm:py-2 min-w-[60px] sm:min-w-[100px] rounded-lg transition-all duration-200 text-xs sm:text-base",
                     "hover:-translate-y-0.5 hover:shadow-md",
                     "disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-none",
                     styles.button
@@ -37,15 +60,16 @@ export function Pagination({ currentPage, totalPages, onPageChange, className }:
                 disabled={currentPage === 1}
                 aria-label="Página anterior"
             >
-                Anterior
+                <span className="hidden sm:inline">Anterior</span>
+                <span className="sm:hidden">Ant</span>
             </button>
 
-            <div className="flex gap-1">
+            <div className="flex gap-0.5 sm:gap-1">
                 {visiblePages.map((page) => (
                     <button
                         key={page}
                         className={cn(
-                            "px-2 sm:px-3 py-2 min-w-[35px] sm:min-w-[40px] rounded-lg transition-all duration-200 text-sm sm:text-base",
+                            "px-1.5 py-1.5 sm:px-3 sm:py-2 min-w-[28px] sm:min-w-[40px] rounded-lg transition-all duration-200 text-xs sm:text-base",
                             "hover:-translate-y-0.5 hover:shadow-md",
                             currentPage === page && styles.active,
                             styles.pageButton
@@ -61,7 +85,7 @@ export function Pagination({ currentPage, totalPages, onPageChange, className }:
 
             <button
                 className={cn(
-                    "px-3 sm:px-4 py-2 min-w-[80px] sm:min-w-[100px] rounded-lg transition-all duration-200 text-sm sm:text-base",
+                    "px-2 py-1.5 sm:px-4 sm:py-2 min-w-[60px] sm:min-w-[100px] rounded-lg transition-all duration-200 text-xs sm:text-base",
                     "hover:-translate-y-0.5 hover:shadow-md",
                     "disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-none",
                     styles.button
@@ -70,7 +94,8 @@ export function Pagination({ currentPage, totalPages, onPageChange, className }:
                 disabled={currentPage === totalPages}
                 aria-label="Página siguiente"
             >
-                Siguiente
+                <span className="hidden sm:inline">Siguiente</span>
+                <span className="sm:hidden">Sig</span>
             </button>
         </div>
     );

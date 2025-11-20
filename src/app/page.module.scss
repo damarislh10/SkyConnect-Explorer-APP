@@ -117,3 +117,18 @@
     min-width: 100%;
   }
 }
+
+.paginationContainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 1rem ; 
+  
+  @media (min-width: 640px) {
+    margin-top: 4rem
+  }
+  
+  @media (min-width: 1024px) {
+    margin-top: 2rem 
+  }
+}

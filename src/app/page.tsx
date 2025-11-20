@@ -16,6 +16,7 @@ export default function Home() {
     airports,
     currentPage,
     totalPages,
+    totalCount,
     isLoading,
     error,
     searchQuery,
@@ -38,12 +39,18 @@ export default function Home() {
   useEffect(() => {
     if (searchQuery) {
       fetchAirports();
+    } else if (!searchQuery && airports.length === 0 && !isLoading) {
+      fetchAirports();
     }
-  }, [fetchAirports, searchQuery]);
+  }, [fetchAirports, searchQuery, airports.length, isLoading]);
 
   const handlePageChange = async (page: number) => {
     setPage(page);
   };
+
+  useEffect(() => {
+
+  }, [totalPages, currentPage, airports.length, searchQuery, totalCount]);
 
   if (isInitialScreen) {
     return (
@@ -95,7 +102,7 @@ export default function Home() {
           </div>
 
           {totalPages > 1 && (
-            <div className="flex justify-center mt-5 sm:mt-12 p-3 sm:p-4">
+            <div className={styles.paginationContainer}>
               <Pagination
                 currentPage={currentPage}
                 totalPages={totalPages}
