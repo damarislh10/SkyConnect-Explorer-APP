@@ -46,12 +46,24 @@
 
 .buttonOutline {
   background-color: transparent;
-  color: var(--text-primary);
-  border: 1px solid var(--border-color);
+  color: #ffffff;
+  border: 1px solid #ffffff;
 
   &:hover:not(:disabled) {
-    background-color: var(--bg-hover);
-    border-color: $primary-color;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: #ffffff;
+    color: #ffffff;
+  }
+  
+  [data-theme="dark"] & {
+    color: $gradient-start;
+    border-color: $gradient-start;
+    
+    &:hover:not(:disabled) {
+      background-color: rgba(0, 106, 255, 0.1);
+      border-color: $gradient-start;
+      color: $gradient-start;
+    }
   }
 }
 

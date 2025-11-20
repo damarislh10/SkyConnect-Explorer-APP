@@ -52,7 +52,7 @@ export default function AirportDetailPage() {
 
     if (isLoading) {
         return (
-            <div className="min-h-[calc(100vh-80px)] px-6 py-8 max-w-7xl mx-auto w-full">
+            <div className="min-h-[calc(100vh-80px)] px-4 sm:px-6 py-4 sm:py-8 max-w-[1800px] mx-auto w-full">
                 <div className="flex flex-col items-center justify-center py-16 gap-4 text-gray-500 dark:text-gray-400 min-h-[400px]">
                     <div className={styles.spinner}></div>
                     <p>Cargando información del aeropuerto...</p>
@@ -63,7 +63,7 @@ export default function AirportDetailPage() {
 
     if (error || !airport) {
         return (
-            <div className="min-h-[calc(100vh-80px)] px-6 py-8 max-w-7xl mx-auto w-full">
+            <div className="min-h-[calc(100vh-80px)] px-4 sm:px-6 py-4 sm:py-8 max-w-[1800px] mx-auto w-full">
                 <div className="text-center py-16 text-gray-500 dark:text-gray-400">
                     <h2 className="text-3xl text-gray-900 dark:text-gray-100 mb-4">Error</h2>
                     <p className="mb-8 text-gray-600 dark:text-gray-400">{error || 'Aeropuerto no encontrado'}</p>
@@ -81,25 +81,25 @@ export default function AirportDetailPage() {
         'Ciudad';
 
     return (
-        <div className="min-h-[calc(100vh-80px)] px-4 sm:px-6 py-4 sm:py-8 max-w-7xl mx-auto w-full">
-            <div className="mb-8 sm:mb-12">
-                <Button
-                    onClick={() => router.back()}
-                    variant="outline"
-                    className="mb-4 sm:mb-6 text-sm sm:text-base"
-                >
-                    ← Volver
-                </Button>
-                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-2 break-words">
-                    {airport.airport_name}
-                </h1>
-                <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-400 break-words">
-                    {city}, {airport.country_name}
-                </p>
-            </div>
-
+        <div className="min-h-[calc(100vh-80px)] px-4 sm:px-6 py-4 sm:py-8 max-w-[1800px] mx-auto w-full">
             <div className="w-full">
-                <AirportDetailsTabs airport={airport} />
+                <div className="mb-8 sm:mb-12">
+                    <Button
+                        onClick={() => router.back()}
+                        variant="outline"
+                        className="mb-4 sm:mb-6 text-sm sm:text-base"
+                    >
+                        ← Volver
+                    </Button>
+                    <h1 className={`${styles.airportTitle} text-center break-words`}>
+                        {airport.airport_name}
+                    </h1>
+
+                </div>
+
+                <div className="w-full">
+                    <AirportDetailsTabs airport={airport} />
+                </div>
             </div>
         </div>
     );

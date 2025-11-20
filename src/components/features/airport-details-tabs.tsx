@@ -35,17 +35,19 @@ export function AirportDetailsTabs({ airport }: AirportDetailsTabsProps) {
 
     return (
         <div className={styles.tabsContainer}>
-            <div className={styles.tabsHeader}>
-                {tabs.map((tab) => (
-                    <button
-                        key={tab.id}
-                        className={`${styles.tab} ${activeTab === tab.id ? styles.active : ""
-                            }`}
-                        onClick={() => setActiveTab(tab.id)}
-                    >
-                        {tab.label}
-                    </button>
-                ))}
+            <div className={styles.tabsInner}>
+                <div className={styles.tabsHeader}>
+                    {tabs.map((tab) => (
+                        <button
+                            key={tab.id}
+                            className={`${styles.tab} ${activeTab === tab.id ? styles.active : ""
+                                }`}
+                            onClick={() => setActiveTab(tab.id)}
+                        >
+                            {tab.label}
+                        </button>
+                    ))}
+                </div>
             </div>
 
             <div className={styles.tabContent}>
@@ -94,69 +96,80 @@ export function AirportDetailsTabs({ airport }: AirportDetailsTabsProps) {
                 )}
 
                 {activeTab === "ubicacion" && (
-                    <Card className={`${styles.detailsCard} px-6 py-5 md:px-8 md:py-6`}>
-                        <div className={styles.contentSection}>
-                            <h3 className={styles.sectionTitle}>
-                                <span className={styles.sectionIcon}>⚲</span>
-                                Ubicación
-                            </h3>
+                    <>
+                        <Card className={`${styles.detailsCard} px-6 py-5 md:px-8 md:py-6`}>
+                            <div className={styles.contentSection}>
+                                <h3 className={styles.sectionTitle}>
+                                    <span className={styles.sectionIcon}>⚲</span>
+                                    Ubicación
+                                </h3>
 
-                            <div className={styles.infoList}>
-                                <p>
-                                    <span className={styles.label}>Latitud: </span>
-                                    <span className={styles.value}>{airport.latitude}</span>
-                                </p>
-                                <p>
-                                    <span className={styles.label}>Longitud: </span>
-                                    <span className={styles.value}>{airport.longitude}</span>
-                                </p>
-                                <p>
-                                    <span className={styles.label}>ID Geoname: </span>
-                                    <span className={styles.value}>
-                                        {airport.geoname_id || "No disponible"}
-                                    </span>
-                                </p>
+                                <div className={styles.infoList}>
+                                    <p>
+                                        <span className={styles.label}>Latitud: </span>
+                                        <span className={styles.value}>{airport.latitude}</span>
+                                    </p>
+                                    <p>
+                                        <span className={styles.label}>Longitud: </span>
+                                        <span className={styles.value}>{airport.longitude}</span>
+                                    </p>
+                                    <p>
+                                        <span className={styles.label}>ID Geoname: </span>
+                                        <span className={styles.value}>
+                                            {airport.geoname_id || "No disponible"}
+                                        </span>
+                                    </p>
+                                </div>
+
+
                             </div>
 
-                            <div className={styles.mapWrapper}>
-                                <AirportMap airport={airport} />
-                            </div>
+                        </Card>
+                        <div className={styles.mapWrapper}>
+                            <AirportMap airport={airport} />
                         </div>
-                    </Card>
+                    </>
                 )}
 
                 {activeTab === "zona-horaria" && (
-                    <Card className={`${styles.detailsCard} px-6 py-5 md:px-8 md:py-6`}>
-                        <div className={styles.contentSection}>
-                            <h3 className={styles.sectionTitle}>
-                                <span className={styles.sectionIcon}>⏱</span>
-                                Zona Horaria
-                            </h3>
+                    <div className={styles.cardsWrapper}>
+                        <Card className={`${styles.detailsCard} px-6 py-5 md:px-8 md:py-6`}>
+                            <div className={styles.contentSection}>
+                                <h3 className={styles.sectionTitle}>
+                                    <span className={styles.sectionIcon}>⏱</span>
+                                    Zona Horaria
+                                </h3>
 
-                            <div className={styles.infoList}>
-                                <p>
-                                    <span className={styles.label}>Zona Horaria: </span>
-                                    <span className={styles.value}>
-                                        {airport.timezone || "No disponible"}
-                                    </span>
-                                </p>
-                                <p>
-                                    <span className={styles.label}>GMT: </span>
-                                    <span className={styles.value}>
-                                        {airport.gmt || "No disponible"}
-                                    </span>
-                                </p>
+                                <div className={styles.infoList}>
+                                    <p>
+                                        <span className={styles.label}>Zona Horaria: </span>
+                                        <span className={styles.value}>
+                                            {airport.timezone || "No disponible"}
+                                        </span>
+                                    </p>
+                                    <p>
+                                        <span className={styles.label}>GMT: </span>
+                                        <span className={styles.value}>
+                                            {airport.gmt || "No disponible"}
+                                        </span>
+                                    </p>
+                                </div>
+
+
                             </div>
-
-                            <div className={styles.timeSection}>
-                                <h3 className={styles.timeTitle}>
+                        </Card>
+                        <Card className={`${styles.detailsCard} px-6 py-5 md:px-8 md:py-6`}>
+                            <div className={styles.contentSection}>
+                                <h3 className={`${styles.sectionTitle} ${styles.gradientTitle}`}>
                                     <span className={styles.sectionIcon}>⏱</span>
                                     Hora Local
                                 </h3>
-                                <p className={styles.localTime}>{formatDate(new Date())}</p>
+                                <p className={styles.localTime}>
+                                    {formatDate(new Date())}
+                                </p>
                             </div>
-                        </div>
-                    </Card>
+                        </Card>
+                    </div>
                 )}
 
                 {activeTab === "estadisticas" && (
@@ -167,8 +180,7 @@ export function AirportDetailsTabs({ airport }: AirportDetailsTabsProps) {
                             </h3>
 
                             <p className={styles.note}>
-                                * Información adicional de estadísticas disponible según la API
-                                de Aviationstack.
+                                * Información adicional de estadísticas
                             </p>
                         </div>
                     </Card>

@@ -62,7 +62,7 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-[calc(100vh-80px)] px-4 sm:px-6 py-4 sm:py-8 max-w-[1800px] mx-auto w-full">
+    <div className="min-h-[calc(100vh-80px)] px-4 sm:px-6 py-5 sm:py-8 max-w-[1800px] mx-auto w-full">
       <div className={styles.resultsHeader}>
         <h1
           className={styles.resultsTitle}

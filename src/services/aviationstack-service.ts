@@ -100,28 +100,41 @@ export async function getAirportByIata(iataCode: string): Promise<Airport | null
 
 export async function getAirportById(airportId: string): Promise<Airport | null> {
   try {
-    const params: Record<string, string | number> = {
-      limit: 1,
-    };
-    
-    const url = buildApiUrl('/airports', params);
-    const response = await fetch(url);
-    
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+    const limit = 100;
+    let offset = 0;
+    let found: Airport | null = null;
+
+    while (!found && offset < 1000) {
+      const params: Record<string, string | number> = {
+        limit,
+        offset,
+      };
+
+      const url = buildApiUrl('/airports', params);
+      const response = await fetch(url);
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data: AirportResponse = await response.json();
+
+      if ('error' in data) {
+        throw new Error((data as any).error.info || 'Error fetching airport');
+      }
+
+      found = data.data.find(
+        (a) => a.airport_id === airportId || a.id === airportId
+      ) || null;
+
+      if (found || data.data.length < limit) {
+        break;
+      }
+
+      offset += limit;
     }
-    
-    const data: AirportResponse = await response.json();
-    
-    if ('error' in data) {
-      throw new Error((data as any).error.info || 'Error fetching airport');
-    }
-    
-    const airport = data.data.find(
-      (a) => a.airport_id === airportId || a.id === airportId
-    );
-    
-    return airport || null;
+
+    return found;
   } catch (error) {
     throw error;
   }
