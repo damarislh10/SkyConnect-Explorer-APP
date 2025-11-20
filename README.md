@@ -84,3 +84,16 @@ El proyecto usa:
 |----------|-------------|-----------|
 | `NEXT_PUBLIC_AVIATIONSTACK_API_KEY` | API Key de Aviationstack | Sí |
 
+
+## Evidencias de App
+<img width="587" height="304" alt="image" src="https://github.com/user-attachments/assets/5bf458a2-7bbc-4e72-af8b-e4cd29e7268a" />
+<img width="589" height="298" alt="image" src="https://github.com/user-attachments/assets/2ce81d04-5d22-4c0e-973b-d2de9474dbad" />
+<img width="590" height="293" alt="image" src="https://github.com/user-attachments/assets/df66071d-c4a0-4f1b-8391-d84d123d7964" />
+<img width="589" height="303" alt="image" src="https://github.com/user-attachments/assets/bc1a9c2c-3362-43b8-8185-44b2ff5bf701" />
+<img width="593" height="296" alt="image" src="https://github.com/user-attachments/assets/2a95b570-1ebc-429a-b7b1-524f5f32d447" />
+
+
+
+
+
+
