@@ -95,7 +95,7 @@ export default function Home() {
           </div>
 
           {totalPages > 1 && (
-            <div className="flex justify-center mt-8 sm:mt-12">
+            <div className="flex justify-center mt-5 sm:mt-12 p-3 sm:p-4">
               <Pagination
                 currentPage={currentPage}
                 totalPages={totalPages}

@@ -1,12 +1,9 @@
-/**
- * Tests para custom hooks
- * Ejemplo de test para useLocalStorage
- */
 
+
+import { jest } from '@jest/globals';
 import { renderHook, act } from '@testing-library/react';
 import { useLocalStorage } from '../use-local-storage';
 
-// Mock localStorage
 const localStorageMock = (() => {
   let store: Record<string, string> = {};
 
